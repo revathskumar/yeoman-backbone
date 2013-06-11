@@ -1,6 +1,7 @@
 @import "h5bp.css";
 @import "bootstrap.css";
 
-#main {
-  border: 1px solid black;
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
 }
