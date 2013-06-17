@@ -5,6 +5,7 @@
 Default    :  [Master](https://github.com/revathskumar/yeoman-backbone)
 Coffee     :  [Coffee](https://github.com/revathskumar/yeoman-backbone/tree/coffee)
 RequireJS  :  [requirejs](https://github.com/revathskumar/yeoman-backbone/tree/requirejs)
+BBB        :  [generator-bbb](https://github.com/revathskumar/yeoman-backbone/tree/bbb)
 
 ### License
 
