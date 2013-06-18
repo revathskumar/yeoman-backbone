@@ -1,5 +1,4 @@
 /*global bb, $*/
-'use strict';
 
 window.bb = {
     Models: {},
@@ -7,6 +6,7 @@ window.bb = {
     Views: {},
     Routers: {},
     init: function () {
+        console.log('Hello Backbone')
         var index = new bb.Views.IndexView({el: $(".container")});
         index.render();
     }

@@ -29,10 +29,6 @@ module.exports = function (grunt) {
                 nospawn: true,
                 livereload: true
             },
-            coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
-            },
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
@@ -48,18 +44,19 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
-            },
-            neuter: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-                tasks: ['neuter:app']
             },
             jst: {
                 files: [
                     '<%= yeoman.app %>/scripts/templates/*.ejs'
                 ],
                 tasks: ['jst']
+            },
+            neuter: {
+                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee}'],
+                tasks: ['coffee:dist', 'neuter']
             }
         },
         connect: {
@@ -166,16 +163,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        uglify: {
-            dist: {
-                files: {
-                    '<%= yeoman.dist %>/scripts/main.js': [
-                        '<%= yeoman.app %>/scripts/{,*/}*.js',
-                        '.tmp/scripts/{,*/}*.js'
-                    ]
-                }
-            }
-        },
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
             options: {
@@ -183,17 +170,11 @@ module.exports = function (grunt) {
             }
         },
         usemin: {
-            html: '<%= yeoman.dist %>/{,*/}*.html',
-            css: '<%= yeoman.dist %>/styles/{,*/}*.css',
-            js: '<%= yeoman.dist %>/scripts/{,*/}*.js',
+            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
-                dirs: ['<%= yeoman.dist %>'],
-                assetsDirs: 'images',
-                patterns: {
-                    js: [[/(yeoman\.png)/, 'xyz.yeoman.png']]
-                }
+                dirs: ['<%= yeoman.dist %>']
             }
-
         },
         imagemin: {
             dist: {
@@ -310,6 +291,7 @@ module.exports = function (grunt) {
         'coffee',
         'createDefaultTemplate',
         'jst',
+        'neuter:app',
         'compass',
         'connect:test',
         'mocha'
@@ -329,7 +311,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy',
-        // 'rev',
+        'rev',
         'usemin'
     ]);
 
