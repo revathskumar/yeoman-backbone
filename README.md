@@ -7,6 +7,7 @@ Coffee     :  [Coffee](https://github.com/revathskumar/yeoman-backbone/tree/coff
 RequireJS  :  [requirejs](https://github.com/revathskumar/yeoman-backbone/tree/requirejs)
 BBB        :  [generator-bbb](https://github.com/revathskumar/yeoman-backbone/tree/bbb)
 Handlebars :  [Handlebars](https://github.com/revathskumar/yeoman-backbone/tree/handlebars)
+Mustache   :  [Mustache](https://github.com/revathskumar/yeoman-backbone/tree/mustache)
 
 ### License
 
