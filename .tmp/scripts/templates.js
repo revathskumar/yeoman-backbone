@@ -1,0 +1,1 @@
+this.JST = {"Todo-template" : '<p>Your content here.</p>',"Todo" : '<p>Your content here.</p>',"Input" : '<p>Content from Input view</p>', "done": "true"};
