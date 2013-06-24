@@ -16,6 +16,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        templates:{
+            exports: 'JST'
         }
     },
     paths: {
@@ -27,7 +30,13 @@ require.config({
 });
 
 require([
-    'backbone'
-], function (Backbone) {
+    'backbone',
+    'views/index-view',
+    'views/todo_form-view'
+], function (Backbone, IndexView, TodoForm) {
+    var index_view = new IndexView({el: $('.container')});
+    index_view.render();
+    var todo_form = new TodoForm({el: $(".hero-unit")})
+    todo_form.render();
     Backbone.history.start();
 });
