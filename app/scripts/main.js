@@ -34,9 +34,9 @@ require([
     'views/index-view',
     'views/todo_form-view'
 ], function (Backbone, IndexView, TodoForm) {
-    var index_view = new IndexView({el: $('.container')});
-    index_view.render();
-    var todo_form = new TodoForm({el: $(".hero-unit")})
-    todo_form.render();
+    var indexView = new IndexView({el: $('.container')});
+    indexView.render();
+    var todoForm = new TodoForm({el: $('.hero-unit')});
+    todoForm.render();
     Backbone.history.start();
 });

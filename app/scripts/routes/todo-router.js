@@ -2,15 +2,15 @@
 
 define([
     'jquery',
-    'backbone',
+    'backbone'
 ], function ($, Backbone) {
     'use strict';
 
-  var TodoRouter = Backbone.Router.extend({
-    routes: {
-    },
+    var TodoRouter = Backbone.Router.extend({
+        routes: {
+        }
 
-  });
+    });
 
-  return TodoRouter;
+    return TodoRouter;
 });

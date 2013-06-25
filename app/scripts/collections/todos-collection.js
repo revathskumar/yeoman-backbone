@@ -1,5 +1,15 @@
-backboneRequirejs.Collections.TodosCollection = Backbone.Collection.extend({
+/*global define*/
 
-  model: backboneRequirejs.Models.TodosModel
+define([
+    'underscore',
+    'backbone',
+    'models/todos-model'
+], function (_, Backbone, TodosModel) {
+    'use strict';
 
+    var TodosCollection = Backbone.Collection.extend({
+        model: TodosModel
+    });
+
+    return TodosCollection;
 });
