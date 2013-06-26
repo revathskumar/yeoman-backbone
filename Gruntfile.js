@@ -48,15 +48,9 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
             },
-            jst: {
-                files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
-                ],
-                tasks: ['jst']
-            },
             neuter: {
-                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee}'],
-                tasks: ['coffee:dist', 'neuter']
+                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee,ejs}'],
+                tasks: ['coffee:dist', 'jst', 'neuter']
             }
         },
         connect: {
