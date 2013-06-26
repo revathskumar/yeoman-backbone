@@ -9,6 +9,8 @@ window.bb = {
         console.log('Hello Backbone')
         var index = new bb.Views.IndexView({el: $(".container")});
         index.render();
+        var todo_form = new bb.Views.TodoFormView({el: $(".hero-unit")});
+        todo_form.render();
     }
 };
 
