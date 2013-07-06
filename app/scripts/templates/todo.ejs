@@ -1,1 +1,10 @@
-<li><%= todo.todo %></li>
+<p>
+  <i class='icon-trash'> </i>
+  <% if(!todo.done){ %>
+  <b><%= todo.todo  %></b>
+  <% }else{ %>
+  <span class='todo-done'><%= todo.todo  %></span>
+  <% } %>
+  <input type="checkbox" class="pull-right"
+  <% if(todo.done){ %> checked='checked' <% } %> />
+</p>

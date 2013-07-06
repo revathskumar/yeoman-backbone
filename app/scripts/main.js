@@ -6,19 +6,19 @@ window.bb = {
     Views: {},
     Routers: {},
     init: function () {
-        console.log('Hello Backbone')
+        console.log('Hello Backbone');
+        window.bb.todos = new bb.Collections.TodosCollection();
         var index = new bb.Views.IndexView({el: $(".container")});
-        index.render();
-        var todo_form = new bb.Views.TodoFormView({el: $(".hero-unit")});
-        todo_form.render();
+        index.render()
+        bb.todos.fetch();
     }
 };
 
 /* Order and include as you please. */
 require('.tmp/scripts/templates');
 require('app/scripts/views/*');
-require('app/scripts/controllers/*');
 require('app/scripts/models/*');
+require('app/scripts/collections/*');
 require('app/scripts/routers/*');
 
 $(document).ready(function () {
