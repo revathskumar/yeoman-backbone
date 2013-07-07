@@ -19,7 +19,8 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: 'dist',
+        testport: 5000
     };
 
     grunt.initConfig({
@@ -45,18 +46,13 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '{.tmp,test}/spec/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
             },
-            jst: {
-                files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
-                ],
-                tasks: ['jst']
-            },
             neuter: {
-                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee}'],
-                tasks: ['coffee:dist', 'neuter']
+                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee,ejs}'],
+                tasks: ['coffee:dist', 'jst' ,'neuter']
             }
         },
         connect: {
@@ -78,8 +74,10 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
+                    port: yeomanConfig.testport,
                     middleware: function (connect) {
                         return [
+                            lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'test'),
                             mountFolder(connect, yeomanConfig.app)
@@ -98,6 +96,9 @@ module.exports = function (grunt) {
             }
         },
         open: {
+            test: {
+                path: 'http://localhost:<%= yeoman.testport %>/test.html'
+            },
             server: {
                 path: 'http://localhost:<%= connect.options.port %>'
             }
@@ -121,7 +122,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                    urls: ['http://localhost:<%= yeoman.testport %>/test.html']
                 }
             }
         },
@@ -271,6 +272,19 @@ module.exports = function (grunt) {
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+        }
+        if (target === 'test') {
+            return grunt.task.run([
+                'clean:server',
+                'coffee:dist',
+                'createDefaultTemplate',
+                'jst',
+                'neuter:app',
+                'compass:server',
+                'connect:test',
+                'open:test',
+                'watch'
+            ])
         }
 
         grunt.task.run([
