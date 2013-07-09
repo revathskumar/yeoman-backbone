@@ -52,6 +52,10 @@ module.exports = function (grunt) {
             neuter: {
                 files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee,ejs}'],
                 tasks: ['coffee:dist', 'jst' ,'neuter']
+            },
+            jasmine : {
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
+                tasks: ['neuter','jasmine']
             }
         },
         connect: {
@@ -117,11 +121,14 @@ module.exports = function (grunt) {
             ]
         },
         jasmine: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://localhost:<%= connect.options.port  %>/test.html']
-                }
+            src : '.tmp/scripts/combined-scripts.js',
+            options : {
+                specs : 'test/spec/**/*.js',
+                vendor : [
+                    '<%= yeoman.app %>/bower_components/jquery/jquery.js',
+                    '<%= yeoman.app %>/bower_components/underscore/underscore.js',
+                    '<%= yeoman.app %>/bower_components/backbone/backbone.js'
+                ]
             }
         },
         coffee: {
