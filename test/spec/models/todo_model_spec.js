@@ -9,7 +9,7 @@
         });
 
         it('title should be empty', function(){
-            expect(this.todo.get('todo')).toEqual('');
+            expect(this.todo.get('title')).toEqual('');
         });
 
         it('should not be completed', function(){

@@ -3,7 +3,7 @@
 bb.Models.TodoModel = Backbone.Model.extend({
 
     defaults: {
-        todo: "",
+        title: "",
         done: false
     },
 
