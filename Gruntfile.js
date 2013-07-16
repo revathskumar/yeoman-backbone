@@ -53,9 +53,9 @@ module.exports = function (grunt) {
                 files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee,ejs}'],
                 tasks: ['coffee:dist', 'jst' ,'neuter']
             },
-            jasmine : {
+            jasmine: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
-                tasks: ['neuter','jasmine']
+                tasks: ['test']
             }
         },
         connect: {
