@@ -1,6 +1,7 @@
 /*global bb, Backbone, JST*/
 
 bb.Views.IndexView = Backbone.View.extend({
+
     initialize: function(){
         this.input = $('#new-todo');
         bb.todos.on('add', this.addOne);
@@ -19,7 +20,7 @@ bb.Views.IndexView = Backbone.View.extend({
 
     createOnEnter: function(e){
         var inputVal = $('input[name=todo]').val();
-        if(e.which != 13 || inputVal == ''){
+        if(e.which !== 13 || inputVal === ''){
             return;
         }
         e.preventDefault();
@@ -33,7 +34,7 @@ bb.Views.IndexView = Backbone.View.extend({
 
     addOne: function( todo ){
         var todoView = new bb.Views.TodoView({model: todo});
-        $(".todo-list").append(todoView.render().el);
+        $('.todo-list').append(todoView.render().el);
     },
 
     render: function(){
