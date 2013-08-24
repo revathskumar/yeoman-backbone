@@ -9,11 +9,12 @@ suite('Todo Model', function(){
 
     test('todo should be empty', function(){
         assert.equal(this.todo.get('todo'), '');
-        assert.equal(this.todo.get('done'), false);
+        assert.isFalse(this.todo.get('done'));
     });
 
     test('toggle', function(){
+        this.todo.set('done', false);
         this.todo.toggle();
-        assert.equal(this.todo.get('done'), true);
+        assert.isTrue(this.todo.get('done'));
     });
 });

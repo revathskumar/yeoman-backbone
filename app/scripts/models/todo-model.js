@@ -1,7 +1,9 @@
-/*global bb, Backbone*/
+/*global bb, Backbone, Store*/
 'use strict';
 
 bb.Models.TodoModel = Backbone.Model.extend({
+
+    localStorage: new Store('todos-backbone'),
 
     defaults: {
         todo: '',
