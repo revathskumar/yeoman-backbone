@@ -1,5 +1,5 @@
-/*global bb, Backbone, JST*/
-
+/*global bb, Backbone, JST, $ */
+'use strict';
 bb.Views.IndexView = Backbone.View.extend({
 
     initialize: function(){
