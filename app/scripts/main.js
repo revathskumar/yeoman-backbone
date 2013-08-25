@@ -1,11 +1,13 @@
 /*global bb, $*/
 
+
 window.bb = {
     Models: {},
     Collections: {},
     Views: {},
     Routers: {},
     init: function () {
+        'use strict';
         console.log('Hello Backbone');
         window.bb.todos = new bb.Collections.TodosCollection();
         var index = new bb.Views.IndexView({el: $('.container')});
@@ -14,15 +16,7 @@ window.bb = {
     }
 };
 
-/* Order and include as you please. */
-require('.tmp/scripts/templates');
-require('app/scripts/views/*');
-require('app/scripts/models/*');
-require('app/scripts/collections/*');
-require('app/scripts/routers/*');
-
 $(document).ready(function () {
     'use strict';
-
     bb.init();
 });

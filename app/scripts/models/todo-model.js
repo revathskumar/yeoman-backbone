@@ -1,18 +1,21 @@
 /*global bb, Backbone, Store*/
-'use strict';
+(function() {
+    'use strict';
 
-bb.Models.TodoModel = Backbone.Model.extend({
+    bb.Models.TodoModel = Backbone.Model.extend({
 
-    localStorage: new Store('todos-backbone'),
+        localStorage: new Store('todos-backbone'),
 
-    defaults: {
-        todo: '',
-        done: false
-    },
+        defaults: {
+            todo: '',
+            done: false
+        },
 
-    toggle: function(){
-        this.save({
-            done: !this.get('done')
-        });
-    }
-});
+        toggle: function(){
+            this.save({
+                done: !this.get('done')
+            });
+        }
+    });
+})();
+

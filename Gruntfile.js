@@ -13,8 +13,10 @@ var mountFolder = function (connect, dir) {
 // templateFramework: 'lodash'
 
 module.exports = function (grunt) {
+    // show elapsed time at the end
+    require('time-grunt')(grunt);
     // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('load-grunt-tasks')(grunt);
 
     // configurable paths
     var yeomanConfig = {
@@ -26,8 +28,11 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             options: {
-                nospawn: true,
-                livereload: true
+                nospawn: true
+            },
+            coffee: {
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                tasks: ['coffee:dist']
             },
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
@@ -48,9 +53,11 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
             },
-            neuter: {
-                files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee,ejs}'],
-                tasks: ['coffee:dist', 'jst', 'neuter']
+            jst: {
+                files: [
+                    '<%= yeoman.app %>/scripts/templates/*.ejs'
+                ],
+                tasks: ['jst']
             }
         },
         connect: {
@@ -115,7 +122,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/test.html']
+                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
                 }
             }
         },
@@ -157,6 +164,12 @@ module.exports = function (grunt) {
                 }
             }
         },
+        // not enabled since usemin task does concat and uglify
+        // check index.html to edit your build targets
+        // enable this task if you prefer defining your build targets here
+        /*uglify: {
+            dist: {}
+        },*/
         useminPrepare: {
             html: '<%= yeoman.app %>/index.html',
             options: {
@@ -181,12 +194,6 @@ module.exports = function (grunt) {
             }
         },
         cssmin: {
-            // This task is pre-configured if you do not wish to use Usemin
-            // blocks for your CSS. By default, the Usemin block from your
-            // `index.html` will take care of minification, e.g.
-            //
-            //     <!-- build:css({.tmp,app}) styles/main.css -->
-            //
             dist: {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
@@ -255,12 +262,6 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },
-        neuter: {
-            app: {
-                src: '<%= yeoman.app %>/scripts/main.js',
-                dest: '.tmp/scripts/combined-scripts.js'
-            }
         }
     });
 
@@ -278,7 +279,6 @@ module.exports = function (grunt) {
             'coffee:dist',
             'createDefaultTemplate',
             'jst',
-            'neuter:app',
             'compass:server',
             'connect:livereload',
             'open',
@@ -291,7 +291,6 @@ module.exports = function (grunt) {
         'coffee',
         'createDefaultTemplate',
         'jst',
-        'neuter:app',
         'compass',
         'connect:test',
         'mocha'
@@ -302,7 +301,6 @@ module.exports = function (grunt) {
         'coffee',
         'createDefaultTemplate',
         'jst',
-        'neuter:app',
         'compass:dist',
         'useminPrepare',
         'imagemin',
