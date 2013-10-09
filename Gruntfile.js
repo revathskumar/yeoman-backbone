@@ -51,7 +51,8 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '{.tmp,test}/spec/{,*/}*.js',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}'
                 ]
             },
             jst: {
@@ -104,7 +105,7 @@ module.exports = function (grunt) {
                 path: 'http://localhost:<%= connect.options.port %>'
             },
             test: {
-                path: 'http://localhost:<%= connect.options.port %>/test.html'
+                path: 'http://localhost:<%= connect.options.port %>'
             }
         },
         clean: {
@@ -126,7 +127,7 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/test.html']
+                    urls: ['http://localhost:<%= connect.options.port %>']
                 }
             }
         },
