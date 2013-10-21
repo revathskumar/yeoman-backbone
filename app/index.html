@@ -5,34 +5,60 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>bb</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/todo.css">
+        <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
     <body>
-        <div class="container">
-
-        </div>
-        <div class="todo_form">
-
-        </div>
-
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="text-muted">bb</h3>
+            </div>
+
+            <div class="jumbotron">
+                <h1>'Allo, 'Allo!</h1>
+                <p class="lead">Always a pleasure scaffolding your apps.</p>
+                <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+            </div>
+
+            <div class="todo_form">
+
+            </div>
+
+            <div class="footer">
+                <p>♥ from the Yeoman team</p>
+            </div>
+        </div>
+
+
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
 
         <!-- build:js scripts/vendor.js -->
@@ -43,19 +69,18 @@
         <!-- endbuild -->
 
         <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/sass-bootstrap/js/bootstrap-affix.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-alert.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-dropdown.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-tooltip.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-modal.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-transition.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-button.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-popover.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-typeahead.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-carousel.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-scrollspy.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-collapse.js"></script>
-        <script src="bower_components/sass-bootstrap/js/bootstrap-tab.js"></script>
+        <script src="bower_components/sass-bootstrap/js/affix.js"></script>
+        <script src="bower_components/sass-bootstrap/js/alert.js"></script>
+        <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
+        <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
+        <script src="bower_components/sass-bootstrap/js/modal.js"></script>
+        <script src="bower_components/sass-bootstrap/js/transition.js"></script>
+        <script src="bower_components/sass-bootstrap/js/button.js"></script>
+        <script src="bower_components/sass-bootstrap/js/popover.js"></script>
+        <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
+        <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
+        <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+        <script src="bower_components/sass-bootstrap/js/tab.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
