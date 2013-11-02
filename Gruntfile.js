@@ -1,5 +1,6 @@
 'use strict';
 var LIVERELOAD_PORT = 35729;
+var SERVER_PORT = 9000;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -28,7 +29,8 @@ module.exports = function (grunt) {
         yeoman: yeomanConfig,
         watch: {
             options: {
-                nospawn: true
+                nospawn: true,
+                livereload: true
             },
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -51,7 +53,8 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}'
+                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
+                    'test/spec/**/*.js'
                 ]
             },
             jst: {
@@ -59,11 +62,15 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/scripts/templates/*.ejs'
                 ],
                 tasks: ['jst']
+            },
+            test: {
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
+                tasks: ['test']
             }
         },
         connect: {
             options: {
-                port: 9000,
+                port: SERVER_PORT,
                 // change this to '0.0.0.0' to access the server from outside
                 hostname: 'localhost'
             },
@@ -83,6 +90,7 @@ module.exports = function (grunt) {
                     port: 9001,
                     middleware: function (connect) {
                         return [
+                            lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'test'),
                             mountFolder(connect, yeomanConfig.app)
@@ -111,7 +119,8 @@ module.exports = function (grunt) {
         },
         jshint: {
             options: {
-                jshintrc: '.jshintrc'
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
             },
             all: [
                 'Gruntfile.js',
@@ -238,7 +247,8 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 }]
             }
@@ -262,7 +272,8 @@ module.exports = function (grunt) {
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                        '/styles/fonts/{,*/}*.*'
+                        '/styles/fonts/{,*/}*.*',
+                        'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 }
             }
@@ -276,14 +287,17 @@ module.exports = function (grunt) {
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
-        } else if (target === 'test') {
+        }
+
+        if (target === 'test') {
             return grunt.task.run([
                 'clean:server',
                 'coffee',
                 'createDefaultTemplate',
                 'jst',
                 'compass:server',
-                'connect:test:keepalive'
+                'connect:test',
+                'watch:livereload'
             ]);
         }
 
@@ -306,7 +320,8 @@ module.exports = function (grunt) {
         'jst',
         'compass',
         'connect:test',
-        'mocha'
+        'mocha',
+        'watch:test'
     ]);
 
     grunt.registerTask('build', [

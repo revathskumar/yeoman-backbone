@@ -1,0 +1,6 @@
+{
+  "sample": {
+    "ui": "tdd",
+    "test-framework": "jasmine"
+  }
+}
