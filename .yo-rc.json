@@ -2,5 +2,12 @@
   "sample": {
     "ui": "tdd",
     "test-framework": "jasmine"
+  },
+  "generator-backbone": {
+    "coffee": true,
+    "testFramework": "mocha",
+    "templateFramework": "lodash",
+    "compassBootstrap": true,
+    "includeRequireJS": true
   }
 }
