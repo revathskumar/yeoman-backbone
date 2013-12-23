@@ -4,10 +4,11 @@
     "test-framework": "jasmine"
   },
   "generator-backbone": {
-    "coffee": true,
+    "coffee": false,
     "testFramework": "mocha",
     "templateFramework": "lodash",
     "compassBootstrap": true,
-    "includeRequireJS": true
+    "includeRequireJS": false,
+    "appPath": "app"
   }
 }
