@@ -4,10 +4,11 @@ window.bbCoffee =
   Views: {}
   Routers: {}
   init: ->
-    index = new bbCoffee.Views.TodoFormView({el: $('.container')})
+    'use strict'
+    todos = new bbCoffee.Collections.TodosCollection();
+    index = new bbCoffee.Views.IndexView({el: $('.jumbotron'), collection: todos})
     index.render()
 
-
-
 $ ->
+  'use strict'
   bbCoffee.init();
