@@ -8,6 +8,7 @@ window.bbCoffee =
     todos = new bbCoffee.Collections.TodosCollection();
     index = new bbCoffee.Views.IndexView({el: $('.jumbotron'), collection: todos})
     index.render()
+    todos.fetch()
 
 $ ->
   'use strict'

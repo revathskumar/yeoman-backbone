@@ -1,0 +1,17 @@
+/* Todo App */
+.todo-done{
+    text-decoration:line-through;
+}
+
+ul.todo-list{
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin-top: 5px;
+  }
+
+  i.glyphicon-trash {
+    cursor: pointer;
+  }
+}

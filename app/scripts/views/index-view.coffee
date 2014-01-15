@@ -12,7 +12,7 @@ class bbCoffee.Views.IndexView extends Backbone.View
     $('.todo-list').append(view.render().el);
 
   enterTodo: (e) ->
-    if e.charCode == 13
+    if e.charCode == 13 || e.keyCode == 13
       todo = new bbCoffee.Models.TodoModel({todo: $('#new-todo').val(), completed: false});
       @collection.create(todo)
       $('#new-todo').val('')
