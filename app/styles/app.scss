@@ -3,12 +3,28 @@
     text-decoration:line-through;
 }
 
+.yeoman {
+  background: url(../images/yeoman.png);
+  width: 420px;
+  height: 420px;
+  margin-left: 69px;
+}
+
 ul.todo-list{
   padding: 0;
 
   li {
     list-style: none;
     margin-top: 5px;
+
+    input[type=checkbox] {
+      /* Double-sized Checkboxes */
+      -ms-transform: scale(2); /* IE */
+      -moz-transform: scale(2); /* FF */
+      -webkit-transform: scale(2); /* Safari and Chrome */
+      -o-transform: scale(2); /* Opera */
+      padding: 10px;
+    }
   }
 
   i.glyphicon-trash {
