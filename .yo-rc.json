@@ -1,9 +1,6 @@
 {
-  "sample": {
-    "ui": "tdd",
-    "test-framework": "jasmine"
-  },
   "generator-backbone": {
+    "ui": "tdd",
     "coffee": false,
     "testFramework": "mocha",
     "templateFramework": "lodash",
