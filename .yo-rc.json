@@ -1,11 +1,11 @@
 {
   "generator-backbone": {
-    "ui": "tdd",
+    "appPath": "app",
+    "appName": "Todo",
     "coffee": false,
     "testFramework": "mocha",
     "templateFramework": "lodash",
     "compassBootstrap": true,
-    "includeRequireJS": false,
-    "appPath": "app"
+    "includeRequireJS": false
   }
 }

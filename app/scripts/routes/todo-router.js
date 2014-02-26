@@ -1,5 +1,5 @@
-/*global bb, Backbone*/
+/*global Todo, Backbone*/
 
-bb.Routers.TodoRouter = Backbone.Router.extend({
+Todo.Routers.TodoRouter = Backbone.Router.extend({
 
 });

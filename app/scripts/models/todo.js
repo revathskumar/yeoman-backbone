@@ -1,11 +1,11 @@
-/*global bb, Backbone*/
+/*global Todo, Backbone*/
 
-bb.Models = bb.Models || {};
+Todo.Models = Todo.Models || {};
 
 (function () {
     'use strict';
 
-    bb.Models.TodoModel = Backbone.Model.extend({
+    Todo.Models.TodoModel = Backbone.Model.extend({
 
         url: '',
 

@@ -1,12 +1,12 @@
-/*global bb, Backbone, JST, $ */
+/*global Todo, Backbone, JST, $ */
 (function(){
     'use strict';
-    bb.Views.IndexView = Backbone.View.extend({
+    Todo.Views.IndexView = Backbone.View.extend({
 
         initialize: function(){
             console.log('Index view');
             this.input = $('#new-todo');
-            bb.todos.on('add', this.addOne);
+            Todo.todos.on('add', this.addOne);
         },
 
         template: JST['app/scripts/templates/index.ejs'],
@@ -26,7 +26,7 @@
                 return;
             }
             e.preventDefault();
-            bb.todos.create({
+            Todo.todos.create({
                 todo: inputVal,
                 done: false
             });
@@ -35,7 +35,7 @@
         },
 
         addOne: function( todo ){
-            var todoView = new bb.Views.TodoView({model: todo});
+            var todoView = new Todo.Views.TodoView({model: todo});
             $('.todo-list').append(todoView.render().el);
         },
 

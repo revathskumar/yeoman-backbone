@@ -1,8 +1,8 @@
-/*global bb, Backbone, Store*/
+/*global Todo, Backbone, Store*/
 (function() {
     'use strict';
 
-    bb.Models.TodoModel = Backbone.Model.extend({
+    Todo.Models.TodoModel = Backbone.Model.extend({
 
         localStorage: new Store('todos-backbone'),
 

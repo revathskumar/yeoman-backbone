@@ -1,6 +1,6 @@
-/*global bb, Backbone, JST*/
+/*global Todo, Backbone, JST*/
 
-bb.Views.TodoView = Backbone.View.extend({
+Todo.Views.TodoView = Backbone.View.extend({
     initialize: function(){
         this.model.on('change', this.render, this);
         this.model.on('destroy', this.remove, this);

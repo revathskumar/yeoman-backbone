@@ -1,8 +1,8 @@
-/*global bb, Backbone, Store*/
+/*global Todo, Backbone, Store*/
 
-bb.Collections.TodosCollection = Backbone.Collection.extend({
+Todo.Collections.TodosCollection = Backbone.Collection.extend({
 
-    model: bb.Models.TodoModel,
+    model: Todo.Models.TodoModel,
     localStorage: new Store('todos-backbone')
 
 });

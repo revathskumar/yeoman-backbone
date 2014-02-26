@@ -1,7 +1,7 @@
-/*global bb, $*/
+/*global Todo, $*/
 
 
-window.bb = {
+window.Todo = {
     Models: {},
     Collections: {},
     Views: {},
@@ -9,14 +9,14 @@ window.bb = {
     init: function () {
         'use strict';
         console.log('Hello Backbone');
-        window.bb.todos = new bb.Collections.TodosCollection();
-        var index = new bb.Views.IndexView({el: $('.container')});
+        window.Todo.todos = new Todo.Collections.TodosCollection();
+        var index = new Todo.Views.IndexView({el: $('.container')});
         index.render();
-        bb.todos.fetch();
+        Todo.todos.fetch();
     }
 };
 
 $(document).ready(function () {
     'use strict';
-    bb.init();
+    Todo.init();
 });

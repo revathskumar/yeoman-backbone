@@ -1,13 +1,13 @@
-/*global bb, Backbone*/
+/*global Todo, Backbone*/
 
-bb.Collections = bb.Collections || {};
+Todo.Collections = Todo.Collections || {};
 
 (function () {
     'use strict';
 
-    bb.Collections.SampleCollection = Backbone.Collection.extend({
+    Todo.Collections.SampleCollection = Backbone.Collection.extend({
 
-        model: bb.Models.SampleModel
+        model: Todo.Models.SampleModel
 
     });
 
