@@ -3,29 +3,16 @@
 
 require.config({
     shim: {
-        underscore: {
-            exports: '_'
-        },
-        backbone: {
-            deps: [
-                'underscore',
-                'jquery'
-            ],
-            exports: 'Backbone'
-        },
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
-        },
-        templates:{
-            exports: 'JST'
         }
     },
     paths: {
-        jquery: '../bower_components/jquery/jquery',
-        backbone: '../bower_components/backbone-amd/backbone',
-        underscore: '../bower_components/underscore-amd/underscore',
-        bootstrap: 'vendor/bootstrap'
+        jquery: '../bower_components/jquery/dist/jquery',
+        backbone: '../bower_components/backbone/backbone',
+        underscore: '../bower_components/lodash/dist/lodash',
+        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
     }
 });
 

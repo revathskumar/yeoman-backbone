@@ -4,11 +4,11 @@ define([
     'underscore',
     'backbone',
     'models/todos-model'
-], function (_, Backbone, TodosModel) {
+], function (_, Backbone, TodoModel) {
     'use strict';
 
     var TodosCollection = Backbone.Collection.extend({
-        model: TodosModel
+        model: TodoModel
     });
 
     return TodosCollection;
